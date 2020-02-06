@@ -1,7 +1,6 @@
 package com.expense.service.impl;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,11 +28,11 @@ public class ExpenseServiceImpl implements ExpenseService {
 	public Expense saveExpense(Expense expense) {
 		
 		//Buggy Code(ExpenseServiceTest.saveExpenseTest())
-		expense.setAmount(2000.00);
-		return expense;
+		//expense.setAmount(2000.00);
+		//return expense;
 		
 		//Correct Code
-		//return expenseRepository.save(expense);
+		return expenseRepository.save(expense);
 	}
 
 	public List<Expense> getExpense() {
@@ -54,11 +53,11 @@ public class ExpenseServiceImpl implements ExpenseService {
 	@Override
 	public void deleteById(Long expenseId) {
 		//Buggy Code(ExpenseControllerTest.testDeleteExpense())
-		log.info("Debug delete");
+		//log.info("Debug delete");
 		
 		//Correct Code
-		//expenseRepository.deleteById(expenseId);
-		//expenseRepository.flush();
+		expenseRepository.deleteById(expenseId);
+		expenseRepository.flush();
 	}
 
 }
